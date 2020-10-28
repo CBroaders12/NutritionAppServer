@@ -4,20 +4,26 @@ const Express = require('Express');
 const db = require('./db');
 
 const app = Express();
-const port = 5200;
 
+// Controllers
+const controllers = require('./controllers')
 
-//TODO: Import Controllers
+// CORS Middleware
+app.use(require('./middleware/corsMiddleware'));
 
-//TODO: CORS Middleware
-
+// JSON middleware
 app.use(Express.json());
 
 //Controller Routes
 //Open Routes
-//TODO: /user route
+app.use('/user', controllers.User);
 
 //Authenticated Routes
 //TODO: /log route
 
-app.listen(port, () => console.log(`[server]: Listening on http://localhost:${port}`));
+db.authenticate()
+.then(() => db.sync())
+.then(() => {
+  app.listen(5200, () => console.log(`[server]: Listening on http://localhost:5200`));
+})
+
