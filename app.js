@@ -20,6 +20,8 @@ app.use('/user', controllers.User);
 
 //Authenticated Routes
 //TODO: /log route
+app.use(require('./middleware/validate-session'));
+app.use('/food', controllers.Food);
 
 db.authenticate()
 .then(() => db.sync())
