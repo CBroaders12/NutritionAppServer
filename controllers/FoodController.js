@@ -9,7 +9,6 @@ FoodController.route('/')
       const foodItems = await Food.findAll({
         where: {
           owner_id: req.user.id,
-          date_eaten: req.body.date_eaten,
         },
       });
       if (foodItems) {
