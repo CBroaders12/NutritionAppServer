@@ -23,7 +23,7 @@ app.use(require('./middleware/validate-session'));
 app.use('/food', controllers.Food);
 
 db.authenticate()
-.then(() => db.sync())
+.then(() => db.sync({force: true}))
 .then(() => {
   app.listen(process.env.PORT, () => console.log(`[server]: Listening on http://localhost:${process.env.PORT}`));
 });
