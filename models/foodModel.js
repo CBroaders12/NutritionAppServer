@@ -6,10 +6,6 @@ const Food = db.define('food', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
   servings: {
     type: DataTypes.FLOAT,
     allowNull: false
@@ -29,6 +25,18 @@ const Food = db.define('food', {
   owner_id: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  protein_in_grams: {
+    type: DataTypes.FLOAT,
+    allowNull: true
+  },
+  fat_in_grams: {
+    type: DataTypes.FLOAT,
+    allowNull: true
+  },
+  carbs_in_grams: {
+    type: DataTypes.FLOAT,
+    allowNull: true
   }
 });
 

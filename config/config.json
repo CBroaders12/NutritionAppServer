@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "conorbroaders",
+    "password": "GiveMeSecurity12",
+    "database": "nutritiontestdb",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "conorbroaders",
+    "password": "GiveMeSecurity12",
+    "database": "nutritiontestdb",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}

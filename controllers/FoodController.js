@@ -30,19 +30,23 @@ FoodController.route('/')
     try {
       const {
         name,
-        description,
-        servings,
-        calories,
-        date_eaten,
-        meal
-      } = req.body;
-      let newItem = await Food.create({
-        name,
-        description,
         servings,
         calories,
         date_eaten,
         meal,
+        carbs_in_grams,
+        fat_in_grams,
+        protein_in_grams
+      } = req.body;
+      let newItem = await Food.create({
+        name,
+        servings,
+        calories,
+        date_eaten,
+        meal,
+        carbs_in_grams,
+        fat_in_grams,
+        protein_in_grams,
         owner_id: req.user.id,
       });
       res.json({
@@ -65,10 +69,12 @@ FoodController.route('/:id')
     try {
       const {
         name,
-        description,
         servings,
         calories,
         date_eaten,
+        carbs_in_grams,
+        fat_in_grams,
+        protein_in_grams,
         meal
       } = req.body;
       const toUpdate = await Food.findOne({
@@ -77,13 +83,15 @@ FoodController.route('/:id')
           owner_id: userId
         },
       });
-      if (toUpdate && name && description && servings && calories && date_eaten && meal) {
+      if (toUpdate && name && servings && calories && date_eaten && meal) {
         toUpdate.name = name;
-        toUpdate.description = description;
         toUpdate.servings = servings;
         toUpdate.calories = calories;
         toUpdate.date_eaten = date_eaten;
         toUpdate.meal = meal;
+        toUpdate.carbs_in_grams = carbs_in_grams;
+        toUpdate.fat_in_grams = fat_in_grams;
+        toUpdate.protein_in_grams = protein_in_grams;
         await toUpdate.save();
         res.status(200).json({
           message: "Successfully updated food entry",
